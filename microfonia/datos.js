@@ -636,6 +636,7 @@ const MICROFONOS = [
   },
   {
     id: "akg-c4000",
+    img: "img/akg-c4000b.jpg",
     marca: "AKG",
     modelo: "C4000 B",
     tipo: "condensador",
