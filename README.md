@@ -30,4 +30,6 @@ robots.txt
    - `notas` y `docs`: listas, pueden ir vacías.
 3. Sube los cambios: la web se actualiza en uno o dos minutos.
 
+Si cambias `datos.js`, `polar.js` o `css/marxadella.css`, sube el número `?v=` con el que se enlazan en los `index.html`. GitHub Pages deja que el navegador guarde cada archivo 10 minutos; con el número nuevo, quien cargue la página nueva recibe también sus archivos nuevos.
+
 Los textos describen el micrófono, no para qué instrumento se usa: el catálogo es neutro respecto a la fuente.
