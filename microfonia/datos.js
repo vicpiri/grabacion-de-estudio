@@ -1373,6 +1373,37 @@ const MICROFONOS = [
       ["Guía rápida Sennheiser K6 / K6-P (2019)", "pdf/sennheiser-k6p-guia-rapida.pdf"],
     ],
   },
+  {
+    id: "shure-10a",
+    img: "img/shure-10a.jpg",
+    marca: "Shure",
+    modelo: "10A",
+    tipo: "dinamico",
+    patrones: ["cardioide"],
+    resumen: "Dinámico cardioide de mano, ya descatalogado, con imán de neodimio e interruptor de encendido que se puede bloquear. La respuesta cae por debajo de 200 Hz y sube de forma gradual hasta un realce de presencia hacia 6 kHz.",
+    datos: [
+      ["Transductor", "Dinámico (bobina móvil)"],
+      ["Patrón polar", "Cardioide"],
+      ["Respuesta en frecuencia", "80 Hz – 12 kHz"],
+      ["Sensibilidad", "1,4 mV/Pa (−57 dBV), tensión en circuito abierto a 1 kHz"],
+      ["Impedancia", "150 Ω nominal (180 Ω real)"],
+      ["Alimentación", "No necesita"],
+      ["Polaridad", "Presión positiva en el diafragma → tensión positiva en el pin 2 respecto al pin 3"],
+      ["Controles", "Interruptor de encendido/apagado; aflojando un tornillo y desplazando una placa se bloquea en encendido"],
+      ["Conector", "XLR de 3 pines macho"],
+      ["Peso", "240 g"],
+    ],
+    sensDbv: -57.0,
+    notas: [
+      "La guía da «−57,0 dBV/Pa (0,14 mV)». Es una errata: −57 dBV/Pa equivalen a 1,4 mV/Pa, no a 0,14 mV. Se deja 1,4 mV/Pa.",
+      "Modelo descatalogado; la guía de usuario es de 2001. Existía la variante 10AM, que solo se diferenciaba por llevar un adaptador giratorio.",
+      "La curva de respuesta oficial está medida a 60 cm. El realce de presencia tiene una muesca estrecha hacia 6,6 kHz.",
+      "En el diagrama polar de la guía, 0° está abajo y 180° arriba. Las curvas de 1 kHz y 5 kHz solo se dibujan donde se separan de la de 500 Hz (a partir de unos 105° y 35°, respectivamente); en el resto se ha tomado la de 500 Hz.",
+    ],
+    docs: [
+      ["Guía de usuario Shure Model 10A (2001)", "pdf/shure-10a-guia.pdf"],
+    ],
+  },
 ];
 
 const TIPOS = {
