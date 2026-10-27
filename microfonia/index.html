@@ -7,7 +7,7 @@
   <title>Microfonía · Grabación de estudio</title>
   <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../fuentes/silka-bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../css/marxadella.css?v=4">
+  <link rel="stylesheet" href="../css/marxadella.css?v=5">
 </head>
 <body>
   <div class="app">
@@ -26,8 +26,11 @@
     <main class="panel" id="panel" tabindex="-1"></main>
   </div>
 
-  <script src="datos.js?v=4"></script>
-  <script src="polar.js?v=4"></script>
+  <script src="datos.js?v=5"></script>
+  <script src="polares-datos.js?v=5"></script>
+  <script src="polar.js?v=5"></script>
+  <script src="respuesta-datos.js?v=5"></script>
+  <script src="respuesta.js?v=5"></script>
   <script>
     const GRUPOS = {
       dinamico: "Dinámicos",
@@ -90,6 +93,7 @@
             </tbody></table>
           </div>
         </div>
+        ${RESPUESTA[m.id] ? htmlRespuesta(RESPUESTA[m.id]) : ""}
         ${notas}
         <section class="bloque"><h3>Documentación</h3><ul class="docs">${docs}</ul></section>`;
     }
@@ -122,7 +126,9 @@
       } else if (m) {
         panel.innerHTML = ficha(m);
         const polar = panel.querySelector(".polar");
-        if (polar) montarPolar(polar, m.patrones);
+        if (polar) montarPolar(polar, m.patrones, POLARES[m.id]);
+        const respuesta = panel.querySelector(".respuesta");
+        if (respuesta) montarRespuesta(respuesta, RESPUESTA[m.id]);
         document.title = `${m.marca} ${m.modelo} · Microfonía`;
         void panel.offsetWidth;
         panel.classList.add("entra");

@@ -258,10 +258,29 @@ a { color: inherit; }
 .pl-superficie { stroke: var(--gris); stroke-width: 3; }
 .pl-curva { fill: rgb(255 100 98 / 0.14); stroke: var(--salmon); stroke-width: 2; stroke-linejoin: round; }
 .pl-marca { fill: var(--blanco); stroke: var(--tinta); stroke-width: 2; }
+.pl-ref { fill: none; stroke: rgb(169 171 218 / 0.4); stroke-width: 1.2; stroke-linejoin: round; }
+.pl-teorico { fill: none; stroke: var(--blanco); stroke-opacity: 0.55; stroke-width: 1.2; stroke-dasharray: 4 4; }
+.pl-frecuencias button { padding: 3px 8px; font-size: 0.82rem; }
+.pl-frecuencias[hidden] { display: none; }
 .pl-resumen { margin: 10px 0 0; font-weight: 600; font-feature-settings: "tnum"; }
 .pl-lectura { margin: 2px 0 0; min-height: 1.55em; color: var(--blanco); font-feature-settings: "tnum"; }
 .pl-lectura.ayuda { color: var(--gris); font-weight: 300; font-size: 0.88rem; }
 .pl-nota { margin: 12px 0 0; font-size: 0.88rem; font-weight: 300; color: var(--gris); }
+
+/* Respuesta en frecuencia */
+.respuesta { max-width: 860px; }
+.respuesta svg { display: block; width: 100%; height: auto; margin-top: 6px; touch-action: none; overflow: visible; }
+.rf-rej { stroke: rgb(244 243 255 / 0.11); stroke-width: 1; }
+.rf-cero { stroke: rgb(244 243 255 / 0.32); }
+.rf-txt { fill: var(--gris); font-size: 11px; font-weight: 300; font-family: inherit; }
+.rf-ref { fill: none; stroke: rgb(169 171 218 / 0.45); stroke-width: 1.5; stroke-linejoin: round; }
+.rf-curva { fill: none; stroke: var(--salmon); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.rf-cursor { stroke: rgb(244 243 255 / 0.5); stroke-width: 1; stroke-dasharray: 3 3; }
+.rf-detalle { margin-top: 10px; }
+.rf-detalle summary { cursor: pointer; color: var(--gris); font-size: 0.92rem; }
+.rf-detalle summary:hover { color: var(--blanco); }
+.rf-tabla { max-width: 340px; margin-top: 8px; }
+.rf-tabla caption { text-align: left; font-weight: 600; padding: 4px 0 6px; }
 
 /* Comparativa */
 .comparativa { width: 100%; border-collapse: collapse; margin-top: 36px; }

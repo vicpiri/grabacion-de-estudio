@@ -198,7 +198,10 @@ const MICROFONOS = [
       "La ficha cubre las dos versiones, XLS y XLII, que solo se diferencian en la cápsula.",
       "La ficha dice «112 dB» en los pads; es una errata de −12 dB.",
     ],
-    docs: [["Ficha AKG C414 XLS y XLII", "pdf/akg-c414-xls-xlii.pdf"]],
+    docs: [
+      ["Ficha AKG C414 XLS y XLII", "pdf/akg-c414-xls-xlii.pdf"],
+      ["Manual AKG C414 XLS y XLII", "pdf/akg-c414-manual.pdf"],
+    ],
   },
   {
     id: "coles-4038",
@@ -224,7 +227,10 @@ const MICROFONOS = [
       "El SPL máximo baja mucho en graves: la cinta se desplaza más a baja frecuencia.",
       "La ficha es del distribuidor AEA y menciona el conector Western Electric 4069 de los modelos antiguos.",
     ],
-    docs: [["Ficha Coles 4038 (AEA)", "pdf/coles-4038.pdf"]],
+    docs: [
+      ["Ficha Coles 4038 (AEA)", "pdf/coles-4038.pdf"],
+      ["Hoja de especificaciones Coles 4038 (Coles)", "pdf/coles-4038-coles.pdf"],
+    ],
   },
   {
     id: "neumann-tlm67",
