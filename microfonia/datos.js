@@ -598,9 +598,9 @@ const MICROFONOS = [
   },
   {
     id: "akg-c2000",
-    img: "img/akg-c2000.jpg",
+    img: "img/akg-c2000b.jpg",
     marca: "AKG",
-    modelo: "C2000",
+    modelo: "C2000 B",
     tipo: "condensador",
     patrones: ["cardioide"],
     resumen: "Condensador de captación lateral con patrón cardioide. Aunque parece de diafragma grande, la cápsula es de media pulgada y va dentro de un anillo deflector mayor. Respuesta plana con un realce suave hacia 12 kHz, pad de −10 dB y filtro de graves suave.",
@@ -621,17 +621,17 @@ const MICROFONOS = [
     ],
     sensDbv: -34.0,
     notas: [
-      "Hay dos versiones: el C2000 B, anterior y de color champán, y el C2000, negro, que lo sustituyó en 2012. Sus manuales dan los mismos datos y las mismas gráficas. La foto es la del C2000.",
+      "Hay dos versiones: el C2000 B, de color champán, que es el de esta ficha, y el C2000, negro, que lo sustituyó en 2012. Sus manuales dan los mismos datos y las mismas gráficas.",
       "AKG lo presenta como micrófono de membrana pequeña: la ficha del C2000 B describe una cápsula de media pulgada dentro de un anillo deflector más grande, que estrecha la captación en agudos.",
       "SPL máximo, señal/ruido y rango dinámico están medidos con phantom de 48 V. Según el manual, bajan 3 dB con 24 V y 6 dB con 12 V.",
       "La ficha comercial de 2012 da 20 Hz – 20 kHz y 330 g; el manual, 30 Hz – 20 kHz y 325 g. Se usan los datos del manual, que coinciden con la gráfica.",
       "Lleva protección antipop y suspensión elástica de la cápsula en el interior del cuerpo.",
     ],
     docs: [
-      ["Manual AKG C2000 (2012, incluye castellano)", "pdf/akg-c2000-manual.pdf"],
-      ["Ficha AKG C2000 (2012)", "pdf/akg-c2000-ficha.pdf"],
       ["Manual AKG C2000 B (incluye castellano)", "pdf/akg-c2000b-manual.pdf"],
       ["Ficha AKG C2000 B", "pdf/akg-c2000b-ficha.pdf"],
+      ["Manual AKG C2000 (2012, incluye castellano)", "pdf/akg-c2000-manual.pdf"],
+      ["Ficha AKG C2000 (2012)", "pdf/akg-c2000-ficha.pdf"],
     ],
   },
   {
