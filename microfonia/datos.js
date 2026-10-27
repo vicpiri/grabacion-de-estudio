@@ -47,7 +47,7 @@ const MICROFONOS = [
       ["Respuesta del monitor", "60 Hz – 20 kHz (dato del altavoz completo, no como micrófono)"],
       ["Alimentación", "No necesita. Mejor dejar la phantom apagada en su canal"],
       ["Cableado en el estudio", "Balanceado: terminales del altavoz a los pines 2 y 3 del XLR"],
-      ["Nivel", "Salida muy caliente: hace falta un pad de unos −20 dB"],
+      ["Nivel", "Salida muy alta: hace falta un pad de unos −20 dB"],
     ],
     sensDbv: null,
     notas: [
