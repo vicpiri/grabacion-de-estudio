@@ -1144,6 +1144,7 @@ const MICROFONOS = [
   },
   {
     id: "sennheiser-me104",
+    oculto: true,
     img: "img/sennheiser-me104.jpg",
     marca: "Sennheiser",
     modelo: "ME 104",

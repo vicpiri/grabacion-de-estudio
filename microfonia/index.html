@@ -7,7 +7,7 @@
   <title>Microfonía · Grabación de estudio</title>
   <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../fuentes/silka-bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../css/marxadella.css?v=21">
+  <link rel="stylesheet" href="../css/marxadella.css?v=22">
 </head>
 <body>
   <div class="app">
@@ -26,11 +26,11 @@
     <main class="panel" id="panel" tabindex="-1"></main>
   </div>
 
-  <script src="datos.js?v=21"></script>
-  <script src="polares-datos.js?v=21"></script>
-  <script src="polar.js?v=21"></script>
-  <script src="respuesta-datos.js?v=21"></script>
-  <script src="respuesta.js?v=21"></script>
+  <script src="datos.js?v=22"></script>
+  <script src="polares-datos.js?v=22"></script>
+  <script src="polar.js?v=22"></script>
+  <script src="respuesta-datos.js?v=22"></script>
+  <script src="respuesta.js?v=22"></script>
   <script>
     const GRUPOS = {
       dinamico: "Dinámicos",
@@ -44,11 +44,14 @@
     const panel = document.getElementById("panel");
     const abrir = document.querySelector(".abrir-menu");
 
+    // Las fichas con «oculto: true» no se muestran (pendientes de confirmar en el estudio)
+    const VISIBLES = MICROFONOS.filter(m => !m.oculto);
+
     const dato = (m, nombre) => (m.datos.find(d => d[0].startsWith(nombre)) || [, "—"])[1];
 
     // Menú agrupado por tipo de transductor
     Object.entries(GRUPOS).forEach(([tipo, nombre]) => {
-      const mics = MICROFONOS.filter(m => m.tipo === tipo)
+      const mics = VISIBLES.filter(m => m.tipo === tipo)
         .sort((x, y) => `${x.marca} ${x.modelo}`.localeCompare(`${y.marca} ${y.modelo}`, "es", { numeric: true }));
       if (!mics.length) return;
       const g = document.createElement("section");
@@ -100,7 +103,7 @@
     }
 
     function comparativa() {
-      const filas = [...MICROFONOS]
+      const filas = [...VISIBLES]
         .sort((a, b) => (b.sensDbv ?? -999) - (a.sensDbv ?? -999))
         .map(m => `<tr>
           <td><a href="#${m.id}"><span class="marca">${m.marca}</span> ${m.modelo}</a></td>
@@ -117,8 +120,8 @@
     }
 
     function mostrar() {
-      const id = location.hash.slice(1) || MICROFONOS[0].id;
-      const m = MICROFONOS.find(x => x.id === id);
+      const id = location.hash.slice(1) || VISIBLES[0].id;
+      const m = VISIBLES.find(x => x.id === id);
       panel.classList.remove("entra");
 
       if (id === "comparar") {

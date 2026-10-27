@@ -32,6 +32,7 @@ robots.txt
    - `datos`: pares `["Campo", "Valor"]`. La comparativa usa «Sensibilidad» y «Alimentación», así que conviene mantener esos nombres.
    - `sensDbv`: sensibilidad en dBV/Pa para ordenar la comparativa, o `null` si no hay dato.
    - `notas` y `docs`: listas, pueden ir vacías.
+   - `oculto: true` (opcional): la ficha no aparece en la web hasta que se quite. Sirve para modelos pendientes de confirmar.
    - `patrones`: claves de `PATRONES` en `polar.js` (`omni`, `cardioide`, `ocho`…). El primero es el que se muestra al abrir la ficha.
 3. Si tienes su curva de respuesta en frecuencia, añádela en `respuesta-datos.js` con el mismo `id`: puntos `[Hz, dB]` relativos a 1 kHz. Si no, la ficha simplemente no muestra el gráfico.
 4. Sube los cambios: la web se actualiza en uno o dos minutos.
