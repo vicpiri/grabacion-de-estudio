@@ -91,7 +91,7 @@ a { color: inherit; }
   color: rgb(255 255 255 / 0.75);
   text-decoration: none;
 }
-.menu-sub:hover { color: #fff; text-decoration: underline; }
+a.menu-sub:hover { color: #fff; text-decoration: underline; }
 
 .abrir-menu { display: none; }
 
