@@ -10,7 +10,7 @@ const MICROFONOS = [
     modelo: "D112",
     tipo: "dinamico",
     patrones: ["cardioide"],
-    resumen: "Dinámico de diafragma grande con frecuencia de resonancia muy baja. Graves potentes por debajo de 100 Hz, un realce estrecho hacia 4 kHz y gran capacidad de SPL.",
+    resumen: "Dinámico de diafragma grande con frecuencia de resonancia muy baja. Graves potentes por debajo de 100 Hz, un realce estrecho hacia 4 kHz y admite niveles de presión sonora muy altos.",
     datos: [
       ["Transductor", "Dinámico (bobina móvil), gradiente de presión"],
       ["Patrón polar", "Cardioide"],
@@ -53,7 +53,7 @@ const MICROFONOS = [
     notas: [
       "No existe ficha de micrófono: es un montaje casero. Yamaha comercializó después el SKRM-100 SubKick con la misma idea.",
       "Lo que entrega es sobre todo la resonancia propia del cono, no una copia fiel de la fuente. Se usa como complemento de otro micrófono, no como sustituto.",
-      "El pad de resistencias del artículo de Tidey está pensado para un cableado desequilibrado (pines 2 y 1). Con nuestro cableado 2-3 hay que usar un pad en H o un pad XLR en línea.",
+      "El pad de resistencias del artículo de Tidey está pensado para un cableado no balanceado (pines 2 y 1). Con nuestro cableado 2-3 hay que usar un pad en H o un pad XLR en línea.",
     ],
     docs: [
       ["Manual del Yamaha NS-10M Studio", "pdf/yamaha-ns-10m-studio.pdf"],
@@ -77,7 +77,7 @@ const MICROFONOS = [
       ["SPL máximo", "155 dB (carga 2500 Ω) · 151 dB (carga 1000 Ω), 1 % THD"],
       ["Ruido propio", "29,5 dB SPL-A"],
       ["Impedancia", "146 Ω (carga mínima recomendada 1000 Ω)"],
-      ["Alimentación", "Phantom 11–52 V DC, 5,4 mA (rinde mejor a 48 V)"],
+      ["Alimentación", "Phantom 11–52 V CC, 5,4 mA (rinde mejor a 48 V)"],
       ["Controles", "Conmutador de contorno: −7 dB centrado en 400 Hz"],
       ["Conector", "XLR de 3 pines integrado (pin 2 hot)"],
       ["Peso", "470 g"],
@@ -251,7 +251,7 @@ const MICROFONOS = [
       ["Impedancia", "50 Ω (carga 1000 Ω)"],
       ["Alimentación", "Phantom 48 V, 3 mA"],
       ["Controles", "Pad −10 dB · filtro paso alto"],
-      ["Conector", "XLR de 3 pines (pin 2 fase +)"],
+      ["Conector", "XLR de 3 pines (pin 2 hot)"],
       ["Peso", "490 g"],
     ],
     sensDbv: -34.9,
