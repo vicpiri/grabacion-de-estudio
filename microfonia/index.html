@@ -7,7 +7,7 @@
   <title>Microfonía · Grabación de estudio</title>
   <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../fuentes/silka-bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../css/marxadella.css?v=13">
+  <link rel="stylesheet" href="../css/marxadella.css?v=14">
 </head>
 <body>
   <div class="app">
@@ -26,11 +26,11 @@
     <main class="panel" id="panel" tabindex="-1"></main>
   </div>
 
-  <script src="datos.js?v=13"></script>
-  <script src="polares-datos.js?v=13"></script>
-  <script src="polar.js?v=13"></script>
-  <script src="respuesta-datos.js?v=13"></script>
-  <script src="respuesta.js?v=13"></script>
+  <script src="datos.js?v=14"></script>
+  <script src="polares-datos.js?v=14"></script>
+  <script src="polar.js?v=14"></script>
+  <script src="respuesta-datos.js?v=14"></script>
+  <script src="respuesta.js?v=14"></script>
   <script>
     const GRUPOS = {
       dinamico: "Dinámicos",
@@ -48,7 +48,8 @@
 
     // Menú agrupado por tipo de transductor
     Object.entries(GRUPOS).forEach(([tipo, nombre]) => {
-      const mics = MICROFONOS.filter(m => m.tipo === tipo);
+      const mics = MICROFONOS.filter(m => m.tipo === tipo)
+        .sort((x, y) => `${x.marca} ${x.modelo}`.localeCompare(`${y.marca} ${y.modelo}`, "es", { numeric: true }));
       if (!mics.length) return;
       const g = document.createElement("section");
       g.className = "grupo";
