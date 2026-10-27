@@ -174,11 +174,11 @@ const MICROFONOS = [
     id: "akg-c414",
     img: "img/akg-c414.jpg",
     marca: "AKG",
-    modelo: "C414",
+    modelo: "C414 XLII",
     tipo: "condensador",
     patrones: ["omni", "cardioideAncho", "cardioide", "hipercardioide", "ocho"],
     polarNota: "Patrones teóricos. El C414 tiene además cuatro posiciones intermedias entre estos cinco. El patrón real varía con la frecuencia: las curvas medidas están en la ficha del fabricante.",
-    resumen: "Condensador de diafragma grande con nueve patrones polares, pads y filtros. El XLS es neutro; el XLII tiene más presencia (sonido tipo C12).",
+    resumen: "Condensador de diafragma grande con nueve patrones polares, pads y filtros. Se reconoce por la rejilla dorada. Su cápsula sigue el sonido del clásico AKG C12, con más presencia en agudos que la versión XLS.",
     datos: [
       ["Transductor", "Condensador de diafragma grande (1″), gradiente de presión"],
       ["Patrón polar", "9 patrones: omni, cardioide ancho, cardioide, hipercardioide, figura de ocho e intermedios"],
@@ -195,7 +195,7 @@ const MICROFONOS = [
     ],
     sensDbv: -33,
     notas: [
-      "La ficha cubre las dos versiones, XLS y XLII, que solo se diferencian en la cápsula.",
+      "La ficha y el manual de AKG cubren las dos versiones, XLS y XLII, que solo se diferencian en la cápsula. Los datos de esta ficha son los del XLII.",
       "La ficha dice «112 dB» en los pads; es una errata de −12 dB.",
     ],
     docs: [
