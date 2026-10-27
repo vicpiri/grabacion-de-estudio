@@ -77,7 +77,7 @@ const MICROFONOS = [
       ["SPL máximo", "155 dB (carga 2500 Ω) · 151 dB (carga 1000 Ω), 1 % THD"],
       ["Ruido propio", "29,5 dB SPL-A"],
       ["Impedancia", "146 Ω (carga mínima recomendada 1000 Ω)"],
-      ["Alimentación", "Phantom 11–52 VDC (tensión continua), 5,4 mA (rinde mejor a 48 V)"],
+      ["Alimentación", "Phantom 11–52 Vcc, 5,4 mA (rinde mejor a 48 V)"],
       ["Controles", "Conmutador de contorno: −7 dB centrado en 400 Hz"],
       ["Conector", "XLR de 3 pines integrado (pin 2 hot)"],
       ["Peso", "470 g"],
