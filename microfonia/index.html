@@ -27,6 +27,7 @@
   </div>
 
   <script src="datos.js"></script>
+  <script src="polar.js"></script>
   <script>
     const GRUPOS = {
       dinamico: "Dinámicos",
@@ -78,7 +79,10 @@
         <h1 class="titulo"><span class="t-marca">${m.marca}</span><span class="t-modelo">${m.modelo}</span></h1>
         <p class="situacion">${TIPOS[m.tipo]}</p>
         <div class="cuerpo">
-          <div class="foto corchetes"><div class="placa">${foto}</div></div>
+          <div class="col-imagen">
+            <div class="foto corchetes"><div class="placa">${foto}</div></div>
+            ${m.patrones ? htmlPolar(m.patrones, m.polarNota) : ""}
+          </div>
           <div>
             <p class="resumen">${m.resumen}</p>
             <table class="datos"><tbody>
@@ -117,6 +121,8 @@
         document.title = "Comparar sensibilidad · Microfonía";
       } else if (m) {
         panel.innerHTML = ficha(m);
+        const polar = panel.querySelector(".polar");
+        if (polar) montarPolar(polar, m.patrones);
         document.title = `${m.marca} ${m.modelo} · Microfonía`;
         void panel.offsetWidth;
         panel.classList.add("entra");

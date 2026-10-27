@@ -234,6 +234,35 @@ a { color: inherit; }
 .docs .formato { color: var(--gris); font-weight: 300; }
 .docs a:hover .doc-titulo { color: var(--salmon); text-decoration: underline; text-underline-offset: 4px; }
 
+/* Diagrama polar */
+.polar { margin: 34px 0 0; padding: 0 24px; }
+.polar h3 { margin: 0 0 10px; font-size: 1.25rem; font-weight: 700; }
+.pl-nombre { margin: 0 0 6px; font-weight: 600; }
+.pl-patrones { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.pl-patrones button {
+  padding: 5px 11px;
+  border: 1px solid var(--linea);
+  background: none;
+  color: var(--gris);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.pl-patrones button:hover { color: var(--blanco); border-color: var(--gris); }
+.pl-patrones button[aria-pressed="true"] { color: var(--blanco); border-color: var(--salmon); box-shadow: inset 0 -2px 0 var(--salmon); }
+.polar svg { display: block; width: 100%; max-width: 340px; height: auto; margin: 4px auto 0; touch-action: none; overflow: visible; }
+.pl-anillo, .pl-radio { fill: none; stroke: rgb(244 243 255 / 0.13); stroke-width: 1; }
+.pl-anillo:first-child { stroke: rgb(244 243 255 / 0.3); }
+.pl-txt { fill: var(--gris); font-size: 10px; font-weight: 300; font-family: inherit; }
+.pl-ang { text-anchor: middle; font-size: 11px; }
+.pl-superficie { stroke: var(--gris); stroke-width: 3; }
+.pl-curva { fill: rgb(255 100 98 / 0.14); stroke: var(--salmon); stroke-width: 2; stroke-linejoin: round; }
+.pl-marca { fill: var(--blanco); stroke: var(--tinta); stroke-width: 2; }
+.pl-resumen { margin: 10px 0 0; font-weight: 600; font-feature-settings: "tnum"; }
+.pl-lectura { margin: 2px 0 0; min-height: 1.55em; color: var(--blanco); font-feature-settings: "tnum"; }
+.pl-lectura.ayuda { color: var(--gris); font-weight: 300; font-size: 0.88rem; }
+.pl-nota { margin: 12px 0 0; font-size: 0.88rem; font-weight: 300; color: var(--gris); }
+
 /* Comparativa */
 .comparativa { width: 100%; border-collapse: collapse; margin-top: 36px; }
 .comparativa th, .comparativa td { text-align: left; padding: 12px 18px 12px 0; border-top: 1px solid var(--linea); vertical-align: top; }
@@ -278,4 +307,5 @@ a { color: inherit; }
   .panel { padding: 32px 16px 60px; }
   .cuerpo { grid-template-columns: minmax(0, 1fr); margin-top: 28px; }
   .foto { padding: 18px 22px; max-width: 420px; }
+  .polar { padding: 0; max-width: 420px; }
 }

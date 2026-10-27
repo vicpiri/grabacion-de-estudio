@@ -9,6 +9,7 @@ const MICROFONOS = [
     marca: "AKG",
     modelo: "D112",
     tipo: "dinamico",
+    patrones: ["cardioide"],
     resumen: "Dinámico de diafragma grande con frecuencia de resonancia muy baja. Graves potentes por debajo de 100 Hz, un realce estrecho hacia 4 kHz y gran capacidad de SPL.",
     datos: [
       ["Transductor", "Dinámico (bobina móvil), gradiente de presión"],
@@ -36,6 +37,8 @@ const MICROFONOS = [
     marca: "Yamaha",
     modelo: "NS10 (Subkick)",
     tipo: "altavoz",
+    patrones: ["ocho"],
+    polarNota: "Aproximado: un cono al aire capta por delante y por detrás con polaridad opuesta, como una figura de ocho. Cualquier carcasa o caja alrededor del altavoz cambia el patrón.",
     resumen: "Woofer de un monitor Yamaha NS-10M usado al revés, como micrófono dinámico de diafragma enorme. Capta graves muy profundos con mucha salida, pero responde lento a los transitorios.",
     datos: [
       ["Transductor", "Altavoz de bobina móvil usado como micrófono dinámico"],
@@ -64,6 +67,7 @@ const MICROFONOS = [
     marca: "Shure",
     modelo: "Beta 91A",
     tipo: "condensador",
+    patrones: ["semicardioide"],
     resumen: "Micrófono de superficie (boundary) de condensador, con preamplificador integrado y un conmutador que recorta los medios-graves. Se apoya sobre una superficie y no necesita soporte.",
     datos: [
       ["Transductor", "Condensador electret"],
@@ -91,6 +95,7 @@ const MICROFONOS = [
     marca: "Shure",
     modelo: "SM57",
     tipo: "dinamico",
+    patrones: ["cardioide"],
     resumen: "Dinámico cardioide robusto que aguanta niveles muy altos. Tiene una subida de presencia en medios-agudos y un corte progresivo de graves.",
     datos: [
       ["Transductor", "Dinámico (bobina móvil)"],
@@ -115,6 +120,7 @@ const MICROFONOS = [
     marca: "Schoeps",
     modelo: "CMC 6 + MK 5",
     tipo: "condensador",
+    patrones: ["omni", "cardioide"],
     resumen: "Condensador de diafragma pequeño del sistema modular Colette: amplificador CMC 6 y cápsula MK 5, que cambia mecánicamente entre omni y cardioide con un solo diafragma.",
     datos: [
       ["Transductor", "Condensador; presión (omni) o gradiente de presión (cardioide)"],
@@ -147,6 +153,7 @@ const MICROFONOS = [
     marca: "Sennheiser",
     modelo: "MD 421-II",
     tipo: "dinamico",
+    patrones: ["cardioide"],
     resumen: "Dinámico cardioide de diafragma grande. Tiene un control de graves de cinco posiciones para compensar el efecto de proximidad.",
     datos: [
       ["Transductor", "Dinámico, gradiente de presión"],
@@ -169,6 +176,8 @@ const MICROFONOS = [
     marca: "AKG",
     modelo: "C414",
     tipo: "condensador",
+    patrones: ["omni", "cardioideAncho", "cardioide", "hipercardioide", "ocho"],
+    polarNota: "Patrones teóricos. El C414 tiene además cuatro posiciones intermedias entre estos cinco. El patrón real varía con la frecuencia: las curvas medidas están en la ficha del fabricante.",
     resumen: "Condensador de diafragma grande con nueve patrones polares, pads y filtros. El XLS es neutro; el XLII tiene más presencia (sonido tipo C12).",
     datos: [
       ["Transductor", "Condensador de diafragma grande (1″), gradiente de presión"],
@@ -197,6 +206,7 @@ const MICROFONOS = [
     marca: "Coles",
     modelo: "4038",
     tipo: "cinta",
+    patrones: ["ocho"],
     resumen: "Micrófono de cinta en figura de ocho diseñado por la BBC. Agudos suaves y una respuesta fuera de eje muy uniforme, útil en técnicas estéreo.",
     datos: [
       ["Transductor", "Cinta (ribbon)"],
@@ -222,6 +232,7 @@ const MICROFONOS = [
     marca: "Neumann",
     modelo: "TLM 67",
     tipo: "condensador",
+    patrones: ["omni", "cardioide", "ocho"],
     resumen: "Condensador de diafragma grande sin transformador con la misma cápsula que el U 67. Tres patrones, pad de −10 dB y filtro paso alto.",
     datos: [
       ["Transductor", "Condensador de diafragma grande, gradiente de presión"],
@@ -250,6 +261,7 @@ const MICROFONOS = [
     marca: "Shure",
     modelo: "SM58",
     tipo: "dinamico",
+    patrones: ["cardioide"],
     resumen: "Dinámico cardioide con filtro antipop esférico en la rejilla. Misma cápsula de base que el SM57, con los graves recortados para controlar el efecto de proximidad.",
     datos: [
       ["Transductor", "Dinámico (bobina móvil)"],
