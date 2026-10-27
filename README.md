@@ -25,7 +25,6 @@ robots.txt
    - `id`: el mismo estilo que el PDF; es el que aparece en la URL de la ficha.
    - `tipo`: una de las claves de `TIPOS` (`dinamico`, `condensador`, `cinta`, `altavoz`). Si hace falta otra, se añade a `TIPOS` en `datos.js` y a `GRUPOS` en `microfonia/index.html` (el nombre del grupo en el menú).
    - `img`: ruta de la foto (`img/marca-modelo.png`).
-   - `unidades`: cuántas hay en el estudio.
    - `datos`: pares `["Campo", "Valor"]`. La comparativa usa «Sensibilidad» y «Alimentación», así que conviene mantener esos nombres.
    - `sensDbv`: sensibilidad en dBV/Pa para ordenar la comparativa, o `null` si no hay dato.
    - `notas` y `docs`: listas, pueden ir vacías.

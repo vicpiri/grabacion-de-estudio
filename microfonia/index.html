@@ -41,7 +41,6 @@
     const abrir = document.querySelector(".abrir-menu");
 
     const dato = (m, nombre) => (m.datos.find(d => d[0].startsWith(nombre)) || [, "—"])[1];
-    const uds = n => n === 1 ? "1 unidad" : `${n} unidades`;
 
     // Menú agrupado por tipo de transductor
     Object.entries(GRUPOS).forEach(([tipo, nombre]) => {
@@ -53,7 +52,6 @@
         <li><a class="opcion" href="#${m.id}" data-id="${m.id}">
           <span class="op-marca">${m.marca}</span>
           <span class="op-modelo">${m.modelo}</span>
-          ${m.unidades > 1 ? `<span class="op-uds">×${m.unidades}</span>` : ""}
         </a></li>`).join("")}</ul>`;
       lista.append(g);
     });
@@ -78,7 +76,7 @@
 
       return `
         <h1 class="titulo"><span class="t-marca">${m.marca}</span><span class="t-modelo">${m.modelo}</span></h1>
-        <p class="situacion">${TIPOS[m.tipo]}. <strong>${uds(m.unidades)}</strong> en el estudio.</p>
+        <p class="situacion">${TIPOS[m.tipo]}</p>
         <div class="cuerpo">
           <div class="foto corchetes"><div class="placa">${foto}</div></div>
           <div>
