@@ -54,6 +54,7 @@ const fmtDb = db => db === -Infinity || db <= POLAR.suelo
   ? "sin captación"
   : (Math.abs(db) < 0.05 ? "0 dB" : `${db.toFixed(1).replace(".", ",").replace("-", "−")} dB`);
 const fmtFrec = f => f >= 1000 ? `${String(f / 1000).replace(".", ",")} kHz` : `${f} Hz`;
+const nombreCurva = m => m.etiqueta || fmtFrec(m.frecuencia);
 
 function curvaTeorica(p) {
   const desde = p.superficie ? -90 : -180, hasta = p.superficie ? 90 : 180;
@@ -103,8 +104,12 @@ function lecturaEn(cont, g) {
   const p = PATRONES[cont.dataset.patron];
   const med = medidasDe(cont);
   if (med) {
-    const db = nivelMedido(med[+cont.dataset.frec].puntos, g);
-    return db === null ? { db: null, texto: "fuera del diagrama medido" } : { db, texto: fmtDb(db) };
+    const curva = med[+cont.dataset.frec];
+    const db = nivelMedido(curva.puntos, g);
+    if (db === null) return { db: null, texto: "fuera del diagrama medido" };
+    // Por debajo del último anillo del diagrama original el valor real no se conoce
+    if (curva.suelo !== undefined && db <= curva.suelo + 0.3) return { db, texto: `${fmtDb(curva.suelo)} o menos` };
+    return { db, texto: fmtDb(db) };
   }
   const db = nivelDb(p, g);
   return { db, texto: fmtDb(db) + (invertida(p, g) ? ", polaridad invertida" : "") };
@@ -124,7 +129,7 @@ function pintarPolar(cont) {
 
   const freqs = cont.querySelector(".pl-frecuencias");
   freqs.innerHTML = med
-    ? med.map((m, i) => `<button type="button" data-frec="${i}" aria-pressed="${i === sel}">${fmtFrec(m.frecuencia)}</button>`).join("")
+    ? med.map((m, i) => `<button type="button" data-frec="${i}" aria-pressed="${i === sel}">${nombreCurva(m)}</button>`).join("")
     : "";
   freqs.hidden = !med;
   freqs.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
@@ -134,7 +139,7 @@ function pintarPolar(cont) {
 
   const a90 = lecturaEn(cont, 90), a180 = lecturaEn(cont, 180);
   cont.querySelector(".pl-resumen").textContent =
-    `${med ? fmtFrec(med[sel].frecuencia) + ". " : ""}A 90°: ${a90.texto}. A 180°: ${a180.texto}.`;
+    `${med ? nombreCurva(med[sel]) + ". " : ""}A 90°: ${a90.texto}. A 180°: ${a180.texto}.`;
   const lectura = cont.querySelector(".pl-lectura");
   lectura.textContent = AYUDA;
   lectura.classList.add("ayuda");
