@@ -5,6 +5,7 @@
 const MICROFONOS = [
   {
     id: "akg-d112",
+    img: "img/akg-d112.jpg",
     marca: "AKG",
     modelo: "D112",
     tipo: "dinamico",
@@ -32,6 +33,7 @@ const MICROFONOS = [
   },
   {
     id: "yamaha-ns10-subkick",
+    img: "img/yamaha-ns10-subkick.jpg",
     marca: "Yamaha",
     modelo: "NS10 (Subkick)",
     tipo: "altavoz",
@@ -60,6 +62,7 @@ const MICROFONOS = [
   },
   {
     id: "shure-beta-91a",
+    img: "img/shure-beta-91a.jpg",
     marca: "Shure",
     modelo: "Beta 91A",
     tipo: "condensador",
@@ -87,6 +90,7 @@ const MICROFONOS = [
   },
   {
     id: "shure-sm57",
+    img: "img/shure-sm57.jpg",
     marca: "Shure",
     modelo: "SM57",
     tipo: "dinamico",
@@ -111,6 +115,7 @@ const MICROFONOS = [
   },
   {
     id: "schoeps-cmc6-mk5",
+    img: "img/schoeps-cmc6-mk5.jpg",
     marca: "Schoeps",
     modelo: "CMC 6 + MK 5",
     tipo: "condensador",
@@ -143,6 +148,7 @@ const MICROFONOS = [
   },
   {
     id: "sennheiser-md421",
+    img: "img/sennheiser-md421.png",
     marca: "Sennheiser",
     modelo: "MD 421-II",
     tipo: "dinamico",
@@ -165,6 +171,7 @@ const MICROFONOS = [
   },
   {
     id: "akg-c414",
+    img: "img/akg-c414.jpg",
     marca: "AKG",
     modelo: "C414",
     tipo: "condensador",
@@ -193,6 +200,7 @@ const MICROFONOS = [
   },
   {
     id: "coles-4038",
+    img: "img/coles-4038.jpg",
     marca: "Coles",
     modelo: "4038",
     tipo: "cinta",
@@ -218,6 +226,7 @@ const MICROFONOS = [
   },
   {
     id: "neumann-tlm67",
+    img: "img/neumann-tlm67.png",
     marca: "Neumann",
     modelo: "TLM 67",
     tipo: "condensador",
@@ -246,6 +255,7 @@ const MICROFONOS = [
   },
   {
     id: "shure-sm58",
+    img: "img/shure-sm58.jpg",
     marca: "Shure",
     modelo: "SM58",
     tipo: "dinamico",

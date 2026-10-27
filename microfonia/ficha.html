@@ -2,63 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Ficha técnica · Grabación de estudio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/estilos.css">
-</head>
-<body>
-  <header class="cabecera">
-    <div class="contenedor">
-      <a class="sitio" href="../">Grabación de estudio</a>
-      <span class="migas">/ <a href="./">Microfonía</a> / <span id="miga"></span></span>
-    </div>
-  </header>
-
-  <main class="contenedor" id="ficha"></main>
-
-  <footer class="pie">
-    <div class="contenedor"><a href="./">← Volver al catálogo</a></div>
-  </footer>
-
-  <script src="datos.js"></script>
+  <title>Microfonía</title>
   <script>
+    // Las fichas viven ahora en index.html; se mantienen los enlaces antiguos (ficha.html?m=id).
     const id = new URLSearchParams(location.search).get("m");
-    const m = MICROFONOS.find(x => x.id === id);
-    const main = document.getElementById("ficha");
-
-    if (!m) {
-      main.innerHTML = `<h1>Ficha no encontrada</h1><p><a href="./">Volver al catálogo</a></p>`;
-    } else {
-      document.title = `${m.marca} ${m.modelo} · Grabación de estudio`;
-      document.getElementById("miga").textContent = `${m.marca} ${m.modelo}`;
-
-      const filas = m.datos.map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join("");
-      const notas = m.notas.length
-        ? `<h2>A tener en cuenta</h2><ul class="notas">${m.notas.map(n => `<li>${n}</li>`).join("")}</ul>`
-        : "";
-      const docs = m.docs.map(([titulo, url]) => {
-        const externo = url.startsWith("http");
-        return `<li><a href="${url}" target="_blank" rel="noopener">
-          <span>${titulo}</span><span class="formato">${externo ? "web ↗" : "PDF ↗"}</span></a></li>`;
-      }).join("");
-
-      main.innerHTML = `
-        <h1>${m.marca} ${m.modelo}</h1>
-        <div class="ficha-cabecera">
-          <span class="etiqueta ${m.tipo}">${TIPOS[m.tipo]}</span>
-          <span class="unidades">${m.unidades} ${m.unidades === 1 ? "unidad" : "unidades"} en el estudio</span>
-        </div>
-        <p class="entradilla" style="margin-top:16px">${m.resumen}</p>
-        <h2>Datos técnicos</h2>
-        <div class="tabla-envoltorio"><table class="ficha"><tbody>${filas}</tbody></table></div>
-        ${notas}
-        <h2>Documentación</h2>
-        <ul class="documentos">${docs}</ul>`;
-    }
+    location.replace("./" + (id ? "#" + id : ""));
   </script>
-</body>
+</head>
+<body><a href="./">Ir al catálogo de microfonía</a></body>
 </html>

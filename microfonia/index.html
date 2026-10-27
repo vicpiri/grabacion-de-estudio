@@ -5,94 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>Microfonía · Grabación de estudio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fuentes/silka-bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/marxadella.css">
 </head>
 <body>
-  <header class="cabecera">
-    <div class="contenedor">
-      <a class="sitio" href="../">Grabación de estudio</a>
-      <span class="migas">/ Microfonía</span>
-    </div>
-  </header>
+  <div class="app">
+    <aside class="menu" id="menu">
+      <div class="menu-cabecera">
+        <img class="logo" src="../img/logo-marxadella.svg" alt="IES La Marxadella">
+        <div>
+          <p class="menu-titulo">Microfonía</p>
+          <a class="menu-sub" href="../">Grabación de estudio</a>
+        </div>
+      </div>
+      <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="lista">Elegir modelo</button>
+      <nav class="lista" id="lista" aria-label="Modelos"></nav>
+    </aside>
 
-  <main class="contenedor">
-    <h1>Microfonía disponible</h1>
-    <p class="entradilla">Catálogo de los micrófonos de nuestros estudios. Cada ficha resume los datos técnicos del fabricante y enlaza su documentación original.</p>
-
-    <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
-    <div class="rejilla" id="rejilla"></div>
-
-    <h2>Comparativa de sensibilidad</h2>
-    <p class="entradilla">De más a menos sensible. Cuanto menor es la sensibilidad, más ganancia de previo hace falta para el mismo nivel.</p>
-    <div class="tabla-envoltorio">
-      <table>
-        <thead><tr><th>Micrófono</th><th>Tipo</th><th>Sensibilidad</th><th>Alimentación</th></tr></thead>
-        <tbody id="comparativa"></tbody>
-      </table>
-    </div>
-  </main>
-
-  <footer class="pie">
-    <div class="contenedor">Material de clase. Datos tomados de la documentación de cada fabricante.</div>
-  </footer>
+    <main class="panel" id="panel" tabindex="-1"></main>
+  </div>
 
   <script src="datos.js"></script>
   <script>
-    const rejilla = document.getElementById("rejilla");
-    const filtros = document.getElementById("filtros");
+    const GRUPOS = {
+      dinamico: "Dinámicos",
+      condensador: "De condensador",
+      cinta: "De cinta",
+      altavoz: "Altavoz como micrófono",
+    };
+
+    const menu = document.getElementById("menu");
+    const lista = document.getElementById("lista");
+    const panel = document.getElementById("panel");
+    const abrir = document.querySelector(".abrir-menu");
 
     const dato = (m, nombre) => (m.datos.find(d => d[0].startsWith(nombre)) || [, "—"])[1];
+    const uds = n => n === 1 ? "1 unidad" : `${n} unidades`;
 
-    function pintar(tipo) {
-      rejilla.innerHTML = "";
-      MICROFONOS.filter(m => !tipo || m.tipo === tipo).forEach(m => {
-        const a = document.createElement("a");
-        a.className = "tarjeta";
-        a.href = "ficha.html?m=" + m.id;
-        a.innerHTML = `
-          <span class="marca">${m.marca}</span>
-          <span class="modelo">${m.modelo}</span>
-          <span>${m.datos.some(d => d[0] === "Patrón polar") ? dato(m, "Patrón polar") : dato(m, "Transductor")}</span>
-          <span class="linea">
-            <span class="etiqueta ${m.tipo}">${TIPOS[m.tipo]}</span>
-            <span class="unidades">${m.unidades} ud.</span>
-          </span>`;
-        rejilla.append(a);
-      });
+    // Menú agrupado por tipo de transductor
+    Object.entries(GRUPOS).forEach(([tipo, nombre]) => {
+      const mics = MICROFONOS.filter(m => m.tipo === tipo);
+      if (!mics.length) return;
+      const g = document.createElement("section");
+      g.className = "grupo";
+      g.innerHTML = `<h2>${nombre}</h2><ul>${mics.map(m => `
+        <li><a class="opcion" href="#${m.id}" data-id="${m.id}">
+          <span class="op-marca">${m.marca}</span>
+          <span class="op-modelo">${m.modelo}</span>
+          ${m.unidades > 1 ? `<span class="op-uds">×${m.unidades}</span>` : ""}
+        </a></li>`).join("")}</ul>`;
+      lista.append(g);
+    });
+
+    const pie = document.createElement("div");
+    pie.className = "menu-pie";
+    pie.innerHTML = `<a class="opcion" href="#comparar" data-id="comparar"><span class="op-modelo">Comparar sensibilidad</span></a>`;
+    lista.append(pie);
+
+    function ficha(m) {
+      const foto = m.img
+        ? `<img src="${m.img}" alt="${m.marca} ${m.modelo}">`
+        : `<span class="sin-foto">Sin foto</span>`;
+      const notas = m.notas.length
+        ? `<section class="bloque"><h3>A tener en cuenta</h3><ul class="notas">${m.notas.map(n => `<li>${n}</li>`).join("")}</ul></section>`
+        : "";
+      const docs = m.docs.map(([titulo, url]) => `
+        <li><a href="${url}" target="_blank" rel="noopener">
+          <span class="doc-titulo">${titulo}</span>
+          <span class="formato">${url.startsWith("http") ? "Web" : "PDF"}</span>
+        </a></li>`).join("");
+
+      return `
+        <h1 class="titulo"><span class="t-marca">${m.marca}</span><span class="t-modelo">${m.modelo}</span></h1>
+        <p class="situacion">${TIPOS[m.tipo]}. <strong>${uds(m.unidades)}</strong> en el estudio.</p>
+        <div class="cuerpo">
+          <div class="foto corchetes"><div class="placa">${foto}</div></div>
+          <div>
+            <p class="resumen">${m.resumen}</p>
+            <table class="datos"><tbody>
+              ${m.datos.map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join("")}
+            </tbody></table>
+          </div>
+        </div>
+        ${notas}
+        <section class="bloque"><h3>Documentación</h3><ul class="docs">${docs}</ul></section>`;
     }
 
-    [["", "Todos"], ...Object.entries(TIPOS)]
-      .filter(([t]) => !t || MICROFONOS.some(m => m.tipo === t))
-      .forEach(([t, nombre]) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.textContent = nombre;
-        b.setAttribute("aria-pressed", t === "" ? "true" : "false");
-        b.addEventListener("click", () => {
-          filtros.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
-          b.setAttribute("aria-pressed", "true");
-          pintar(t);
-        });
-        filtros.append(b);
-      });
+    function comparativa() {
+      const filas = [...MICROFONOS]
+        .sort((a, b) => (b.sensDbv ?? -999) - (a.sensDbv ?? -999))
+        .map(m => `<tr>
+          <td><a href="#${m.id}"><span class="marca">${m.marca}</span> ${m.modelo}</a></td>
+          <td>${m.sensDbv === null ? "Sin dato" : dato(m, "Sensibilidad")}</td>
+          <td>${dato(m, "Alimentación")}</td>
+        </tr>`).join("");
+      return `
+        <h1 class="titulo"><span class="t-marca">Microfonía</span><span class="t-modelo">Sensibilidad</span></h1>
+        <p class="resumen" style="margin-top:20px">De más a menos sensible. Cuanto menos sensible es un micrófono, más ganancia de previo necesita para dar el mismo nivel.</p>
+        <div class="tabla-envoltorio"><table class="comparativa">
+          <thead><tr><th>Micrófono</th><th>Sensibilidad</th><th>Alimentación</th></tr></thead>
+          <tbody>${filas}</tbody>
+        </table></div>`;
+    }
 
-    pintar("");
+    function mostrar() {
+      const id = location.hash.slice(1) || MICROFONOS[0].id;
+      const m = MICROFONOS.find(x => x.id === id);
+      panel.classList.remove("entra");
 
-    const tbody = document.getElementById("comparativa");
-    [...MICROFONOS]
-      .sort((a, b) => (b.sensDbv ?? -999) - (a.sensDbv ?? -999))
-      .forEach(m => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td><a href="ficha.html?m=${m.id}">${m.marca} ${m.modelo}</a></td>
-          <td><span class="etiqueta ${m.tipo}">${TIPOS[m.tipo]}</span></td>
-          <td class="num">${m.sensDbv === null ? "sin dato" : dato(m, "Sensibilidad")}</td>
-          <td>${dato(m, "Alimentación")}</td>`;
-        tbody.append(tr);
-      });
+      if (id === "comparar") {
+        panel.innerHTML = comparativa();
+        document.title = "Comparar sensibilidad · Microfonía";
+      } else if (m) {
+        panel.innerHTML = ficha(m);
+        document.title = `${m.marca} ${m.modelo} · Microfonía`;
+        void panel.offsetWidth;
+        panel.classList.add("entra");
+      } else {
+        panel.innerHTML = `<h1 class="titulo"><span class="t-modelo">No existe esa ficha</span></h1>
+          <p class="resumen" style="margin-top:20px">Elige un modelo en el menú.</p>`;
+      }
+
+      lista.querySelectorAll(".opcion").forEach(a =>
+        a.setAttribute("aria-current", a.dataset.id === id ? "true" : "false"));
+      abrir.textContent = m ? `${m.marca} ${m.modelo}` : id === "comparar" ? "Comparar sensibilidad" : "Elegir modelo";
+    }
+
+    abrir.addEventListener("click", () => {
+      const abierto = menu.classList.toggle("abierto");
+      abrir.setAttribute("aria-expanded", abierto);
+    });
+
+    lista.addEventListener("click", e => {
+      if (!e.target.closest(".opcion")) return;
+      menu.classList.remove("abierto");
+      abrir.setAttribute("aria-expanded", "false");
+      panel.focus({ preventScroll: true });
+      if (matchMedia("(max-width: 860px)").matches) panel.scrollIntoView();
+      else window.scrollTo(0, 0);
+    });
+
+    window.addEventListener("hashchange", mostrar);
+    mostrar();
   </script>
 </body>
 </html>

@@ -1,0 +1,284 @@
+/* Identidad visual IES La Marxadella sobre fondo oscuro.
+   Azul eléctrico #1E22AA y naranja salmón #FF6462 del manual; el fondo es una tinta derivada del azul. */
+
+@font-face { font-family: "Silka"; src: url("../fuentes/silka-light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Silka"; src: url("../fuentes/silka-regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Silka"; src: url("../fuentes/silka-semibold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Silka"; src: url("../fuentes/silka-bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --azul: #1e22aa;
+  --salmon: #ff6462;
+  --tinta: #0c0e3a;
+  --tinta-2: #15185a;
+  --blanco: #f4f3ff;
+  --gris: #a9abda;
+  --linea: rgb(244 243 255 / 0.14);
+  --placa: #ecebf7;
+  --menu: 290px;
+  --corchete: 5px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--tinta); }
+
+body {
+  margin: 0;
+  background: var(--tinta);
+  color: var(--blanco);
+  font-family: "Silka", "Segoe UI", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--salmon);
+  outline-offset: 3px;
+}
+
+/* Corchetes del logo: dos ángulos que encierran el contenido.
+   Proporciones tomadas del logotipo: trazo ≈ 4,6 % y brazos ≈ 23 % de la altura. */
+.corchetes { position: relative; }
+.corchetes::before,
+.corchetes::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18%;
+  max-width: 64px;
+  border: var(--corchete) solid var(--salmon);
+  pointer-events: none;
+}
+.corchetes::before { left: 0; border-right: 0; }
+.corchetes::after { right: 0; border-left: 0; }
+
+/* Estructura */
+.app {
+  display: grid;
+  grid-template-columns: var(--menu) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* Menú */
+.menu {
+  background: var(--azul);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 28px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.3) transparent;
+}
+.menu-cabecera { padding: 0 28px; }
+.menu-cabecera .logo { display: block; width: 92px; height: auto; }
+.menu-titulo {
+  margin: 26px 0 2px;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.menu-sub {
+  margin: 0;
+  font-weight: 300;
+  color: rgb(255 255 255 / 0.75);
+  text-decoration: none;
+}
+.menu-sub:hover { color: #fff; text-decoration: underline; }
+
+.abrir-menu { display: none; }
+
+.grupo { margin-top: 30px; }
+.grupo h2 {
+  margin: 0 0 6px;
+  padding: 0 28px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.62);
+}
+.grupo ul { list-style: none; margin: 0; padding: 0; }
+
+.opcion {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 28px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.opcion .op-marca { font-weight: 300; }
+.opcion .op-modelo { font-weight: 600; }
+.opcion .op-uds { margin-left: auto; font-weight: 300; font-size: 0.86rem; color: rgb(255 255 255 / 0.65); }
+.opcion:hover { background: rgb(255 255 255 / 0.08); }
+
+/* La opción activa toma el color de la ficha: se lee como una pestaña unida al panel. */
+.opcion[aria-current="true"] {
+  background: var(--tinta);
+  box-shadow: inset var(--corchete) 0 0 var(--salmon);
+}
+.opcion[aria-current="true"] .op-uds { color: var(--gris); }
+
+.menu-pie { margin-top: 30px; padding-top: 18px; border-top: 1px solid rgb(255 255 255 / 0.18); }
+
+/* Panel de la ficha */
+.panel {
+  padding: 56px clamp(24px, 5vw, 72px) 80px;
+  max-width: 1180px;
+}
+
+.titulo { margin: 0 0 8px; line-height: 0.98; }
+.titulo .t-marca {
+  display: block;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  color: var(--gris);
+  letter-spacing: 0;
+}
+.titulo .t-modelo {
+  display: block;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+  letter-spacing: -0.025em;
+}
+.situacion { margin: 14px 0 0; color: var(--gris); font-weight: 300; }
+.situacion strong { color: var(--blanco); font-weight: 600; }
+
+.cuerpo {
+  display: grid;
+  grid-template-columns: minmax(240px, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 4vw, 64px);
+  margin-top: 44px;
+  align-items: start;
+}
+
+.foto { padding: 22px 24px; }
+.placa {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--placa);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.placa img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 9%;
+  mix-blend-mode: multiply;
+}
+.placa .sin-foto { color: #5b5d8f; font-weight: 300; }
+
+.resumen {
+  margin: 0 0 30px;
+  font-size: 1.16rem;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 58ch;
+}
+
+.datos { width: 100%; border-collapse: collapse; }
+.datos th, .datos td {
+  text-align: left;
+  vertical-align: top;
+  padding: 11px 0;
+  border-top: 1px solid var(--linea);
+}
+.datos th {
+  width: 36%;
+  padding-right: 20px;
+  font-weight: 300;
+  color: var(--gris);
+}
+.datos td { font-weight: 400; }
+.datos td, .comparativa td { font-feature-settings: "tnum"; }
+
+.bloque { margin-top: 52px; max-width: 76ch; }
+.bloque h3 { margin: 0 0 14px; font-size: 1.25rem; font-weight: 700; }
+
+.notas { list-style: none; margin: 0; padding: 0; }
+.notas li { position: relative; padding-left: 22px; }
+.notas li + li { margin-top: 10px; }
+.notas li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--salmon);
+}
+
+.docs { list-style: none; margin: 0; padding: 0; }
+.docs a {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid var(--linea);
+  text-decoration: none;
+}
+.docs li:last-child a { border-bottom: 1px solid var(--linea); }
+.docs .formato { color: var(--gris); font-weight: 300; }
+.docs a:hover .doc-titulo { color: var(--salmon); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Comparativa */
+.comparativa { width: 100%; border-collapse: collapse; margin-top: 36px; }
+.comparativa th, .comparativa td { text-align: left; padding: 12px 18px 12px 0; border-top: 1px solid var(--linea); vertical-align: top; }
+.comparativa thead th { border-top: 0; font-weight: 300; color: var(--gris); }
+.comparativa td a { font-weight: 600; text-decoration: none; }
+.comparativa td a:hover { color: var(--salmon); text-decoration: underline; }
+.comparativa .marca { font-weight: 300; }
+.tabla-envoltorio { overflow-x: auto; }
+
+/* El único movimiento: los corchetes se cierran sobre la foto al cambiar de modelo. */
+@media (prefers-reduced-motion: no-preference) {
+  .entra .foto::before { animation: cierra-izq 0.45s cubic-bezier(.2, .7, .2, 1); }
+  .entra .foto::after { animation: cierra-der 0.45s cubic-bezier(.2, .7, .2, 1); }
+  @keyframes cierra-izq { from { transform: translateX(-18px); opacity: 0; } }
+  @keyframes cierra-der { from { transform: translateX(18px); opacity: 0; } }
+}
+
+/* Pantallas estrechas: el menú pasa arriba y se pliega */
+@media (max-width: 860px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .menu { position: static; height: auto; padding: 18px 0 0; }
+  .menu-cabecera { display: flex; align-items: center; gap: 16px; padding: 0 16px; }
+  .menu-cabecera .logo { width: 64px; }
+  .menu-titulo { margin: 0; font-size: 1.3rem; }
+  .abrir-menu {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 16px;
+    border: 0;
+    border-top: 1px solid rgb(255 255 255 / 0.18);
+    background: none;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+  .lista { display: none; padding-bottom: 20px; }
+  .menu.abierto .lista { display: block; }
+  .grupo h2, .opcion { padding-left: 16px; padding-right: 16px; }
+  .panel { padding: 32px 16px 60px; }
+  .cuerpo { grid-template-columns: minmax(0, 1fr); margin-top: 28px; }
+  .foto { padding: 18px 22px; max-width: 420px; }
+}
