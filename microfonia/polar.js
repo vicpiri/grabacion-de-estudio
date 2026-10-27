@@ -212,5 +212,6 @@ function htmlPolar(claves, nota) {
       <p class="pl-resumen"></p>
       <p class="pl-lectura" aria-live="polite"></p>
       <p class="pl-nota">${nota || "Patrón teórico. El real se estrecha o se abre según la frecuencia: las curvas medidas están en la documentación del fabricante."}</p>
+      <p class="aviso">Gráfico orientativo. Para valores exactos, consulta la documentación del fabricante.</p>
     </figure>`;
 }

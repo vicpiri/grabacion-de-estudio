@@ -135,5 +135,6 @@ function htmlRespuesta(datos) {
         <table class="datos rf-tabla"><caption></caption><tbody></tbody></table>
       </details>
       <p class="pl-nota">Curva típica de la documentación del fabricante${varias ? "; en gris, el resto de curvas para comparar" : ""}. Nivel relativo a 1 kHz. Fuente: ${datos.fuente}.</p>
+      <p class="aviso">Gráfico orientativo. Para valores exactos, consulta la documentación del fabricante.</p>
     </section>`;
 }
